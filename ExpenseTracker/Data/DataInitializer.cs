@@ -7,10 +7,10 @@ namespace ExpenseTracker.Data;
 public class DataInitializer
 {
     private readonly ApplicationDbContext _context;
-    private readonly UserManager<IdentityUser> _userManager;
+    private readonly UserManager<AppUser> _userManager;
 
 
-    public DataInitializer(ApplicationDbContext context, UserManager<IdentityUser> userManager)
+    public DataInitializer(ApplicationDbContext context, UserManager<AppUser> userManager)
     {
         _context = context;
         _userManager = userManager;
@@ -38,7 +38,7 @@ public class DataInitializer
 
     private void AddCategoryIfNotExists(string name)
     {
-        if (_context.Categories.Any(c => c.Name == name)) return;
+        if (_context.Categories.Any() ||_context.Categories.Any(c => c.Name == name)) return;
         _context.Categories.Add(new Category
         {
             Name = name,
@@ -68,7 +68,7 @@ public class DataInitializer
     private void SeedUsers()
     {
         AddUserIfNotExists("lexi.hendrix@expensetracker.se", "Hejsan123#", new string[] { "Admin" });
-        AddUserIfNotExists("lexi.hendrix@awesome.com", "Hejsan123#", new string[] { "User", "Subscriber" });
+        AddUserIfNotExists("lexi.hendrix@awesome.com", "Hejsan123#", new string[] { "User" });
     }
 
 
@@ -77,7 +77,7 @@ public class DataInitializer
     {
         if (_userManager.FindByEmailAsync(userName).Result != null) return;
 
-        var user = new IdentityUser
+        var user = new AppUser
         {
             UserName = userName,
             Email = userName,
@@ -99,11 +99,6 @@ public class DataInitializer
         if (role == null)
         {
             _context.Roles.Add(new IdentityRole { Name = "User", NormalizedName = "User" });
-        }
-        role = _context.Roles.FirstOrDefault(r => r.Name == "Subscriber");
-        if (role == null)
-        {
-            _context.Roles.Add(new IdentityRole { Name = "Subscriber", NormalizedName = "Subscriber" });
         }
         _context.SaveChanges();
 

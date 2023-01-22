@@ -1,0 +1,69 @@
+﻿@page
+@model ExpenseTracker.Pages.Contact.ContactUsModel
+@{
+}
+<section class="contact">
+    @if (Model.Sent)
+    {
+        <h2>Your email has been sent!</h2>
+        <p>We'll probably not get back to you as we got better things to do than answering dumb questions! </p>
+    }
+
+    else
+    {
+        <h2 class="h1-responsive font-weight-bold text-left my-4">Get in touch</h2>
+
+        <div class="row">
+            <div class="col-md-6">
+                <form method="post">
+                    <div class="row">
+                    <div class="col-sm-6 px-1">
+                        <label asp-for="Namn" hidden>Namn</label>
+                        <input asp-for="Namn" class="form-control" placeholder="Your Name" required />
+                    </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-sm-6 px-1">
+                            <label asp-for="Email" hidden>Email</label>
+                            <input asp-for="Email" class="form-control" placeholder="Email" required />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 px-1">
+                            <label asp-for="Header" hidden>Ärende</label>
+                            <input asp-for="Header" id="subject" class="form-control" placeholder="Subject" required />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6 px-1">
+                            <label asp-for="Message" hidden>Meddelande</label>
+                            <textarea asp-for="Message" id="message rows="5" class="form-control md-textarea" placeholder="Message" required></textarea>
+                        </div>
+                    </div>
+                        <div class="contact-btn">
+                            <input class="btn btn-primary" type="submit" value="Send" />
+                        </div>
+                </form>
+            </div>
+           <div class="col-md-6">
+                <div class="col-md-6 text-justify">
+                <ul class="list-unstyled">
+                    <li>
+                        <p><i class="fa fa-map-marker"></i> Awesome Town, 666 66, SomeCoolCountry</p>
+                    </li>
+                    <li>
+                        <p><i class="fa fa-phone"></i> +12 345 678 90</p>
+                    </li>
+                    <li>
+                        <p><i class="fa fa-envelope-o"></i> contact@expensetracker.com</p>
+                    </li>
+                </ul>
+            </div>
+           </div>
+        </div>
+    }
+
+</section>
+

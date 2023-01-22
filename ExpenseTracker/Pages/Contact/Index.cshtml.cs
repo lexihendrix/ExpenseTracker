@@ -8,9 +8,10 @@ using Microsoft.EntityFrameworkCore;
 using ExpenseTracker.Data;
 using Microsoft.AspNetCore.Authorization;
 
-namespace ExpenseTracker.Pages.Expenses
+namespace ExpenseTracker.Pages.Contact
 {
     [Authorize]
+
     public class IndexModel : PageModel
     {
         private readonly ExpenseTracker.Data.ApplicationDbContext _context;
@@ -20,12 +21,11 @@ namespace ExpenseTracker.Pages.Expenses
             _context = context;
         }
 
-        public IList<Expense> Expense { get;set; }
+        public IList<Message> Message { get;set; }
 
         public async Task OnGetAsync()
         {
-            Expense = await _context.Expenses
-                .Include(e => e.Category).ToListAsync();
+            Message = await _context.Message.ToListAsync();
         }
     }
 }

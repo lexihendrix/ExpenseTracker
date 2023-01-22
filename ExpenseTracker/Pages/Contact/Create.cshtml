@@ -1,0 +1,191 @@
+﻿@page
+@model ExpenseTracker.Pages.Contact.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+<!--
+<h2>Create</h2>
+
+<h4>Message</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Message.CreatedAt" class="control-label"></label>
+                <input asp-for="Message.CreatedAt" class="form-control" />
+                <span asp-validation-for="Message.CreatedAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Message.Header" class="control-label"></label>
+                <input asp-for="Message.Header" class="form-control" />
+                <span asp-validation-for="Message.Header" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Message.Body" class="control-label"></label>
+                <input asp-for="Message.Body" class="form-control" />
+                <span asp-validation-for="Message.Body" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Message.SentAt" class="control-label"></label>
+                <input asp-for="Message.SentAt" class="form-control" />
+                <span asp-validation-for="Message.SentAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Message.Sent" /> @Html.DisplayNameFor(model => model.Message.Sent)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+-->
+<section class="contact">
+    <div id="contact-tabs" class="container">
+        <ul class="nav nav-pills custom-pill">
+            <li class="nav-item active">
+                <a href="#create-tab" data-toggle="tab">New Message</a>
+            </li>
+            <li class="nav-item">
+                <a href="#history-tab" data-toggle="tab">Message History</a>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="create-tab">
+               <div class="container-fluid message-view">
+                    <h3>Drop us a Message <i class="fa fa-envelope-o"></i></h3>
+                    @if (Model.Success)
+                    {
+                        <h2>Your email has been sent!</h2>
+                        <p>We'll probably not get back to you as we got better things to do than answering dumb questions! </p>
+                    }
+
+                    else
+                    {
+                        <div class="col col-sm-6">
+                        <form method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="Message.Header" hidden>Subject</label>
+                                <input asp-for="Message.Header" id="subject" class="form-control" placeholder="Subject" required />
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Message.Body" hidden>Message</label>
+                                <textarea asp-for="Message.Body" id="message rows="6" class="form-control" placeholder="Message" required></textarea>
+                            </div>
+                            <div class="mx-auto">
+                                <input class="btn btn-primary" type="submit" value="Send" />
+                            </div>
+                        </form>
+                        </div>
+                        <div class="col col-sm-4 contact-info">
+                            <p><i class="fa fa-map-marker"></i> Awesome Town, 666 66, SomeCoolCountry</p>
+                            <p><i class="fa fa-phone"></i> +12 345 678 90</p>
+                            <p><i class="fa fa-envelope-o"></i> contact@expensetracker.com</p>
+                        </div>
+                    }
+               </div>
+            </div>
+            <div class="tab-pane fade" id="history-tab">
+                <table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Messages[0].CreatedAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Messages[0].Header)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Messages[0].Body)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Messages[0].SentAt)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Messages) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Header)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Body)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SentAt)
+            </td>
+            <td>
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+            </div>
+        </div>
+        </div>
+    
+    
+    <!--
+    @if (Model.Success)
+    {
+        <h2>Your email has been sent!</h2>
+        <p>We'll probably not get back to you as we got better things to do than answering dumb questions! </p>
+    }
+
+    else
+    {
+        <form method="post">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Message.Header" hidden>Subject</label>
+                <input asp-for="Message.Header" id="subject" class="form-control" placeholder="Subject" required />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Message.Body" hidden>Message</label>
+                <textarea asp-for="Message.Body" id="message rows="6" class="form-control" placeholder="Message" required></textarea>
+            </div>
+            <div class="mx-auto">
+                <input class="btn btn-primary" type="submit" value="Send" />
+            </div>
+        </form>
+        <div class="col col-sm-4">
+
+            <p><i class="fa fa-map-marker"></i> Awesome Town, 666 66, SomeCoolCountry</p>
+            <p><i class="fa fa-phone"></i> +12 345 678 90</p>
+            <p><i class="fa fa-envelope-o"></i> contact@expensetracker.com</p>
+            <div>
+                <a asp-page="Index">Back to List</a>
+            </div>
+        </div>
+
+
+
+    }
+-->
+</section>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

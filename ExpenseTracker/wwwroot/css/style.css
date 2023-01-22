@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 
 :root {
+
     /*
     --background-color: 
     --header-text-color: 
@@ -31,62 +32,172 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: var(--header-text-color);
+    color: white;
     font-weight: 700;
-    background-color: var(--header-background-color);
-}
-
-.navmenu {
-    display: flex;
-    list-style: none;
-    gap: 25px;
-}
-
-.navicons {
-    display: flex;
-    list-style: none;
-    gap: 5px;
+    background-color: black;
 }
 
 .navbar-nav {
     list-style: none;
 }
 
-.navbar-nav li {
+.nav-link {        
     padding: 20px;
+    color: lightpink;
+    font-size: 18px;
 }
+
+.nav-link:hover {
+    color: white;
+}  
 
 .logo {
     font-size: 26px;
 }
 
+.logopart2{
+    color:lightpink;
+}
+
 .logoicon {
     font-size: 26px;
+    color: lightpink;
 }
 
 .navicon {
     font-size: 26px;
 }
 
-a:hover{
+a:hover {
     text-decoration: none;
+}
+/*
+.login {
+    background-image: url(/img/calculator-background.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+*/
+/*=========================================================
+	skriv nr -> ContactUs
+===========================================================*/
+.contact {
+    padding: 80px 0;
+}
+
+.contact h3 {
+    font-size: 45px;
+    font-weight: 700;
+    text-align: left;
+    padding: 20px 20px 60px;
+}
+    
+.tab-content {
+    color: white;
+    background-color: pink;
+    padding: 5px 15px;
+}
+
+.nav-item:active {
+    background-color: lightpink;
+}
+
+#contact-tabs .nav-pills > .active > a:focus {
+    border-radius: 4px 4px 0 0;
+    font-size: 17px;
+    letter-spacing: 0.8px;
+    font-weight: 500;
+    background-color: pink;
+}
+
+#contact-tabs .nav-pills > li > a {
+    border-radius: 4px 4px 0 0;
+    font-size: 17px;
+    letter-spacing: 0.8px;
+    font-weight: 500;
+}
+
+.message-view {
+    padding: 40px 30px 50px 20px !important;
+}
+
+.contact-info {
+    font-size:16px;
+   
 }
 
 
-/*=========================================================
+    /*.contact {
+    
+    
+}
+.contact h2 {
+        font-size: 45px;
+        font-weight: 700;
+        margin-bottom: 30px;
+    }
+
+    
+
+.contact form input,
+.contact textarea {
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 0 0 8px 0;
+    padding: 18px 26px;
+    font-weight: 500;
+    letter-spacing: 0.8px;
+    transition: 0.3s ease-in-out;
+}
+
+   .contact input:focus,
+   .contact textarea:focus {
+        background: rgba(255, 255, 255, 1);
+        color: pink;
+    }
+
+        .contact form input::placeholder,
+        .contact form textarea::placeholder {
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .contact form input:focus::placeholder,
+        .contact form textarea:focus::placeholder {
+            color: #121212;
+            opacity: 0.8;
+        }
+
+    .contact form .contact-btn {
+        font-weight: 700;
+        color: #000;
+        background-color: #fff;
+        border-radius: 20px;
+        font-size: 18px;
+        margin-top: 25px;
+        position: relative;
+        transition: 0.3s ease-in-out;
+    }
+    */
+    /*=========================================================
 	skriv nr -> FOOTER
 ===========================================================*/
 
-#footer {
-    background: #15161D;
-    color: #B9BABC;
+    #footer {
+    background-color: black;
+    color: white;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding: 20px;
 }
 
-#bottom-footer {
-    background: #1E1F29;
+#heart, #footer-name {
+    color: pink;
 }
 
 .footer {
     margin: 30px 0px;
 }
-
